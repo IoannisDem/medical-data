@@ -11,6 +11,6 @@ ENV output_path=/opt/ml/processing/output
 COPY input/ /opt/ml/processing/input/
 COPY output/ /opt/ml/processing/output/
 
-COPY script.py /script.py
+COPY ./processing/script.py /script.py
 
 CMD ["python3", "script.py"]
