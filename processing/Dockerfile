@@ -8,9 +8,6 @@ ENV input_path=/opt/ml/processing/input
 ENV output_path=/opt/ml/processing/output
 
 # copy local files
-COPY input/ /opt/ml/processing/input/
-COPY output/ /opt/ml/processing/output/
-
 COPY ./processing/script.py /script.py
 
 CMD ["python3", "script.py"]
