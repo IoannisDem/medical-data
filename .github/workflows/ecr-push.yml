@@ -8,7 +8,8 @@ on:
 
 
 env:
-  AWS_REGION: "us-east-1"   
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: medical-data
   
 
 jobs:
@@ -34,6 +35,7 @@ jobs:
       - name: Build, Tag and Push the image 
         env:
             ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+            IMAGE_TAG: latest
         run: |
-          docker build -t $ECR_REGISTRY/${{ secrets.ECR_REPO }}:latest . -f processing/Dockerfile processing/
-          docker push $ECR_REGISTRY/${{ secrets.ECR_REPO }}:lates
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f processing/Dockerfile .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
