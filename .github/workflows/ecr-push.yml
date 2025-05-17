@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'processing/Dockerfile'
+  workflow_dispatch:
 
 
 env:
