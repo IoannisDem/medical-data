@@ -8,7 +8,6 @@ def main():
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.5]*3, std=[0.5]*3),
     ])
 
     input_dir = Path(os.getenv("input_path"))
