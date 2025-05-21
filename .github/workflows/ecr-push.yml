@@ -3,7 +3,7 @@ run-name: Create the image for the data processing and pushing to ECR
 on:
   push:
     paths:
-      - 'processing/Dockerfile'
+      - 'processing/*'
   workflow_dispatch:
 
 
