@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'training/script.py'
+    workflow_dispatch:
 
 env:
   AWS_REGION: us-east-1
