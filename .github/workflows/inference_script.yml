@@ -1,0 +1,24 @@
+name: inference-script
+run-name: Push the inference script to S3
+on:
+  push:
+    paths:
+      - 'inference/inference.py'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Initiate inference scritp push
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Upload to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: "us-east-1"
+        run: |
+          aws s3 cp inference/inference.py s3://medical-dataset-model/code/inference.py
