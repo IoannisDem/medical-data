@@ -1,0 +1,22 @@
+name: script-tar
+run-name: Create and pusht the training tar file
+on:
+  push:
+    paths:
+      - 'training/script.py'
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: medical-data
+
+jobs:
+  build:
+    name: Initiate the file zipping
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compress to tar
+        run: tar -czvf training/script.tar.gz training/script.py
