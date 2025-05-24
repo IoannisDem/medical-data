@@ -30,4 +30,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: "us-east-1"
         run: |
-          ls
+          cd training
+          aws s3 cp source.tar.gz s3://medical-dataset-model/code/source.tar.gz
